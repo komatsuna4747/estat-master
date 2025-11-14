@@ -1,21 +1,76 @@
-[tool.poetry]
-name = "jsic_list"
+[project]
+name = "jsic-scraper"
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+description = "JSIC code scraper and definition extractor"
+requires-python = ">=3.13"
+dependencies = [
+    "pandas>=1.5.0",
+    "requests>=2.28.1",
+    "beautifulsoup4>=4.11.1",
+    "lxml>=4.9.1",
+]
 
-[tool.poetry.dependencies]
-python = "^3.9"
-pandas = "^1.5.0"
-requests = "^2.28.1"
-beautifulsoup4 = "^4.11.1"
-lxml = "^4.9.1"
+[dependency-groups]
+dev = [
+    "ruff>=0.13.2",
+    "mypy>=1.9.0,<2.0.0",
+    "pytest>=8.1.1,<9.0.0",
+    "pre-commit>=4.1.0,<5.0.0",
+    "python-dotenv>=1.0.1,<2.0.0",
+]
 
-[tool.poetry.dev-dependencies]
-flake8 = "^5.0.4"
-mypy = "^0.982"
-ipykernel = "^6.16.0"
+[tool.mypy]
+check_untyped_defs = true
+ignore_errors = false
+strict_optional = true
+warn_unused_configs = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+ignore_missing_imports = true
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.ruff]
+target-version = "py313"
+line-length = 120
+lint.select = ["ALL"]
+lint.ignore = [
+    # missing-trailing-comma
+    "COM812",
+    # ambiguous-variable-name
+    "E741",
+    #  single-line-implicit-string-concatenation
+    "ISC001",
+    # assert
+    "S101",
+    # suspicious-non-cryptographic-random-usage
+    "S311",
+    # unnecessary-assign
+    "RET504",
+    # magic-value-comparison
+    "PLR2004",
+    # pydocstyle
+    "D",
+    # flake8-annotations
+    "ANN",
+]
+exclude = [
+    ".git",
+    ".github",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    "__pycache__",
+    "tests",
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["scrape_jsic", "main"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 5
+
+[tool.pytest.ini_options]
+minversion = "6.2.5"
+addopts = "-ra -q"
+pythonpath = "."
+testpaths = ["tests"]

@@ -63,8 +63,6 @@ lint.ignore = [
     "D",
     # flake8-annotations
     "ANN",
-    # pandas-df-variable-name (df is a common convention)
-    "PD901",
 ]
 exclude = [
     ".git",

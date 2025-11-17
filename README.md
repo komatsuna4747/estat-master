@@ -8,6 +8,12 @@ A Python-based ETL tool for scraping and processing Japanese government classifi
 - **JSOC (日本標準職業分類)** - Japan Standard Occupational Classification *(coming soon)*
 - Extensible architecture for adding more classification types
 
+## Data Source
+
+All classification data is sourced from the official e-Stat government statistics portal:
+- **e-Stat Classifications**: https://www.e-stat.go.jp/classifications/terms
+- Data includes official classification codes, names, descriptions, and examples
+
 ## Features
 
 - Downloads classification master data from e-Stat API

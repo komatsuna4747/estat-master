@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is an e-Stat master data tool for scraping and processing Japanese government classification data. Currently supports JSIC (Japan Standard Industrial Classification / 日本標準産業分類) with plans to add JSOC (Japan Standard Occupational Classification / 日本標準職業分類) and other classification types. The project implements an extensible ETL pipeline to download, transform, and export classification master data with examples.
 
+**Data Source**: All classification data is sourced from the official e-Stat government statistics portal: https://www.e-stat.go.jp/classifications/terms
+
 ## Development Commands
 
 This project uses **uv** (not pip) for package management and task running.
